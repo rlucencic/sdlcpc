@@ -5,7 +5,7 @@
 #include "cpc.h"
 
 /*
- * The CPC's ROMs: files in the data folder's roms/ (emu_rom_read()), named
+ * The CPC's ROMs: files in the machine's roms/ folder (emu_rom_read()), named
  * as esp32cpc's: os464.rom ... basicplus.rom, system.cpr.
  */
 typedef enum {

@@ -117,7 +117,7 @@ cmake -S . -B build -G Ninja && cmake --build build
 
 ### 3. ROMs
 
-In the data folder's `roms/` (`~/rpi5emu/roms`), named as esp32cpc's:
+In the data folder's `cpc/roms/` (`~/rpi5emu/cpc/roms`), named as esp32cpc's:
 `os464.rom`, `basic10.rom`, `os664.rom`, `basic664.rom`, `os6128.rom`,
 `basic11.rom`, `amsdos.rom` (16 KB each); for the Plus `system.cpr`, or
 `osplus.rom` and `basicplus.rom`. Not part of this repository.
@@ -173,7 +173,7 @@ flowchart LR
   EMU -- picture --> WIN
   EMU -- sound --> SND[SDL audio]
   WIN -- keys · mouse --> EMU
-  DATA[("~/rpi5emu<br>roms · cpc")]
+  DATA[("~/rpi5emu<br>cpc · cpc/roms")]
   EMU <--> DATA
   WEB <--> DATA
 ```

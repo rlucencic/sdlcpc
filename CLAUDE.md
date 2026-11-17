@@ -12,7 +12,7 @@ project is the glue.
 |---|---|
 | `src/main.c` | The CPC as an `emu_machine_t`: esp32cpc's `main/main.c` through `../rpi5emu/tools/port_glue.py`, then the ROM message, `shutdown()` |
 | `src/settings.c` | esp32cpc's, over `emu/nvs.h` (section `cpc`: `model`) |
-| `src/rom_store.c` | `~/rpi5emu/roms/` through `emu_rom_read()`: os464.rom ... system.cpr |
+| `src/rom_store.c` | `~/rpi5emu/cpc/roms/` through `emu_rom_read()`: os464.rom ... system.cpr |
 
 Keep `src/main.c` in step with esp32cpc's `main/main.c`.
 

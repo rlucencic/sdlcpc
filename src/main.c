@@ -61,8 +61,8 @@ static void storage(bool sd_card)
 static bool missing(const char *what)
 {
     static char message[1400];
-    snprintf(message, sizeof(message), "No %s ROM: copy %s into %s/roms.", model_full[settings.model], what,
-             emu_data_dir());
+    snprintf(message, sizeof(message), "No %s ROM: copy %s into %s.", model_full[settings.model], what,
+             emu_rom_dir());
     emu_set_message(message);
     return false;
 }
