@@ -1,7 +1,7 @@
-# rpi5cpc: the Amstrad CPC on the Raspberry Pi 5
+# sdlcpc: the Amstrad CPC on Linux and macOS through SDL 3
 
 esp32cpc's CPC (`../esp32cpc/components/cpc`, platform independent) on the
-rpi5emu runtime (`../rpi5emu`, its CLAUDE.md: the workflow, the Pi, the
+sdlemu runtime (`../sdlemu`, its CLAUDE.md: the workflow, the Pi, the
 lessons), the Z80 (`CONFIG_Z80_TIMING_CPC`) and uPD765 esp32emu's. The
 machine's own behaviour, lessons and tests are esp32cpc's CLAUDE.md; this
 project is the glue.
@@ -10,19 +10,19 @@ project is the glue.
 
 | Path | What |
 |---|---|
-| `src/main.c` | The CPC as an `emu_machine_t`: esp32cpc's `main/main.c` through `../rpi5emu/tools/port_glue.py`, then the ROM message, `shutdown()` |
+| `src/main.c` | The CPC as an `emu_machine_t`: esp32cpc's `main/main.c` through `../sdlemu/tools/port_glue.py`, then the ROM message, `shutdown()` |
 | `src/settings.c` | esp32cpc's, over `emu/nvs.h` (section `cpc`: `model`) |
-| `src/rom_store.c` | `~/rpi5emu/cpc/roms/` through `emu_rom_read()`: os464.rom ... system.cpr |
+| `src/rom_store.c` | `~/sdlemu/cpc/roms/` through `emu_rom_read()`: os464.rom ... system.cpr |
 
 Keep `src/main.c` in step with esp32cpc's `main/main.c`.
 
 ## Build, run, check
 
 ```sh
-../rpi5emu/tools/pi.sh rpi5cpc build
-../rpi5emu/tools/pi.sh rpi5cpc headless     # or run: the window here
-../rpi5emu/tools/console.sh i 'T CAT\n'
-../rpi5emu/tools/pi.sh rpi5cpc shot out.png
+../sdlemu/tools/pi.sh sdlcpc build
+../sdlemu/tools/pi.sh sdlcpc headless     # or run: the window here
+../sdlemu/tools/console.sh i 'T CAT\n'
+../sdlemu/tools/pi.sh sdlcpc shot out.png
 ```
 
 Console: the runtime's (`h`) and esp32cpc's: `k <n>` tap key n (line * 8

@@ -1,13 +1,14 @@
-<h1 align="center">rpi5cpc</h1>
+<h1 align="center">sdlcpc</h1>
 
 <p align="center">
-  <b>An Amstrad CPC 464, 664, 6128, 464 Plus or 6128 Plus on the Raspberry Pi 5, in a window of its own.</b><br>
+  <b>An Amstrad CPC 464, 664, 6128, 464 Plus or 6128 Plus in an SDL 3 window on Linux or macOS.</b><br>
   Z80 with the real CPC timing, Plus hardware sprites and 4096 colours, disks, cartridges.
 </p>
 
 <p align="center">
   <img alt="Raspberry Pi 5" src="https://img.shields.io/badge/Raspberry%20Pi-5-c51a4a">
-  <img alt="Linux arm64" src="https://img.shields.io/badge/Linux-arm64-333">
+  <img alt="Linux arm64 and amd64" src="https://img.shields.io/badge/Linux-arm64%20%7C%20amd64-333">
+  <img alt="macOS arm64" src="https://img.shields.io/badge/macOS-arm64-333">
   <img alt="SDL 3" src="https://img.shields.io/badge/SDL-3-1d4ed8">
   <img alt="Z80" src="https://img.shields.io/badge/CPU-Z80-555">
   <img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-green">
@@ -25,28 +26,27 @@
   <sub>The CPC 6128 with a program saved to a new disc and catalogued, and the 6128 Plus's system cartridge menu, on the Pi.</sub>
 </p>
 
-rpi5cpc runs [esp32cpc](https://github.com/rlucencic/esp32cpc)'s CPC on a Raspberry Pi 5 with
-64-bit Linux, in a window of its own (X11 or Wayland, through SDL 3). The machine is the
+sdlcpc runs [esp32cpc](https://github.com/rlucencic/esp32cpc)'s CPC on 64-bit Linux (arm64 and amd64) and Apple Silicon macOS. SDL 3 provides the window, sound and input. The machine is the
 same code as on the ESP32 boards: esp32cpc's platform-independent core and
 [esp32emu](https://github.com/rlucencic/esp32emu)'s CPU core, on
-[rpi5emu](https://github.com/rlucencic/rpi5emu), the family's Linux runtime: a setup
-screen in the window, sound, the Pi's keyboard and mouse, a web page on your network and a
+[sdlemu](https://github.com/rlucencic/sdlemu), the family's desktop runtime: a setup
+screen in the window, sound, the host's keyboard and mouse, a web page on your network and a
 console.
 
-It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
-[rpi5zx](https://github.com/rlucencic/rpi5zx) (ZX Spectrum),
-[rpi5cbm](https://github.com/rlucencic/rpi5cbm) (Commodore 64 and 128),
-[rpi5coco](https://github.com/rlucencic/rpi5coco) (Tandy Color Computer 2 and 3),
-[rpi5gs](https://github.com/rlucencic/rpi5gs) (Apple IIGS),
-[rpi5msx](https://github.com/rlucencic/rpi5msx) (MSX1 and MSX2),
-[rpi5xl](https://github.com/rlucencic/rpi5xl) (Atari 800XL and 130XE),
-[rpi5ste](https://github.com/rlucencic/rpi5ste) (Atari STE),
-[rpi5pc](https://github.com/rlucencic/rpi5pc) (IBM PC/XT and PC/AT),
-[rpi5mac](https://github.com/rlucencic/rpi5mac) (Macintosh Plus, SE, Classic),
-[rpi5mac2](https://github.com/rlucencic/rpi5mac2) (Macintosh LC and II),
-[rpi5mac3](https://github.com/rlucencic/rpi5mac3) (Macintosh LC II and LC III),
-[rpi5arc](https://github.com/rlucencic/rpi5arc) (Acorn Archimedes),
-[rpi5ami](https://github.com/rlucencic/rpi5ami) (Amiga 500, 2000, 600, 1200).
+It belongs to the SDL desktop family of the ESP32 emulators:
+[sdlzx](https://github.com/rlucencic/sdlzx) (ZX Spectrum),
+[sdlcbm](https://github.com/rlucencic/sdlcbm) (Commodore 64 and 128),
+[sdlcoco](https://github.com/rlucencic/sdlcoco) (Tandy Color Computer 2 and 3),
+[sdlgs](https://github.com/rlucencic/sdlgs) (Apple IIGS),
+[sdlmsx](https://github.com/rlucencic/sdlmsx) (MSX1 and MSX2),
+[sdlxl](https://github.com/rlucencic/sdlxl) (Atari 800XL and 130XE),
+[sdlste](https://github.com/rlucencic/sdlste) (Atari STE),
+[sdlpc](https://github.com/rlucencic/sdlpc) (IBM PC/XT and PC/AT),
+[sdlmac](https://github.com/rlucencic/sdlmac) (Macintosh Plus, SE, Classic),
+[sdlmac2](https://github.com/rlucencic/sdlmac2) (Macintosh LC and II),
+[sdlmac3](https://github.com/rlucencic/sdlmac3) (Macintosh LC II and LC III),
+[sdlarc](https://github.com/rlucencic/sdlarc) (Acorn Archimedes),
+[sdlami](https://github.com/rlucencic/sdlami) (Amiga 500, 2000, 600, 1200).
 
 ## Features
 
@@ -97,11 +97,8 @@ It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
 
 ### 1. What you need
 
-- A Raspberry Pi 5 with 64-bit Linux (developed on Ubuntu 26.04; any Linux with SDL 3.2 or
-  later should do)
-- The tools and libraries:
-  `sudo apt install build-essential cmake ninja-build pkg-config libsdl3-dev libsdl3-ttf-dev libpng-dev`
-- [esp32emu](https://github.com/rlucencic/esp32emu), [rpi5emu](https://github.com/rlucencic/rpi5emu)
+- 64-bit Linux (including Raspberry Pi 5) or Apple Silicon macOS with SDL 3.2 or newer. See [desktop build dependencies](https://github.com/rlucencic/sdlemu#building).
+- [esp32emu](https://github.com/rlucencic/esp32emu), [sdlemu](https://github.com/rlucencic/sdlemu)
   and [esp32cpc](https://github.com/rlucencic/esp32cpc), cloned next to this project
 - The ROMs (below)
 
@@ -109,24 +106,24 @@ It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
 
 ```sh
 git clone https://github.com/rlucencic/esp32emu.git
-git clone https://github.com/rlucencic/rpi5emu.git
+git clone https://github.com/rlucencic/sdlemu.git
 git clone https://github.com/rlucencic/esp32cpc.git
-git clone https://github.com/rlucencic/rpi5cpc.git && cd rpi5cpc
+git clone https://github.com/rlucencic/sdlcpc.git && cd sdlcpc
 cmake -S . -B build -G Ninja && cmake --build build
 ```
 
 ### 3. ROMs
 
-In the data folder's `cpc/roms/` (`~/rpi5emu/cpc/roms`), named as esp32cpc's:
+In the data folder's `cpc/roms/` (`~/sdlemu/cpc/roms`), named as esp32cpc's:
 `os464.rom`, `basic10.rom`, `os664.rom`, `basic664.rom`, `os6128.rom`,
 `basic11.rom`, `amsdos.rom` (16 KB each); for the Plus `system.cpr`, or
 `osplus.rom` and `basicplus.rom`. Not part of this repository.
 
 ### 4. First start
 
-1. `build/rpi5cpc`: the setup screen opens in a window.
+1. `build/sdlcpc`: the setup screen opens in a window.
 2. Choose the model and click **Start**.
-3. Put images into `~/rpi5emu/cpc/`, drop them on the window or the web page, and
+3. Put images into `~/sdlemu/cpc/`, drop them on the window or the web page, and
    insert them on the setup screen's **Disks** page.
 
 ## Using it
@@ -137,16 +134,16 @@ In the data folder's `cpc/roms/` (`~/rpi5emu/cpc/roms`), named as esp32cpc's:
 | Full screen | Ctrl+Alt+F |
 | Give the mouse to the machine, take it back | A click in the window; Ctrl+Alt+G |
 | Run as fast as it goes (warp) | Ctrl+Alt+W, again for real speed |
-| Take a screenshot | Ctrl+Alt+S (into `~/rpi5emu/screenshots`), or the console's `s` |
-| Insert an image | The setup screen's **Disks** page, drop it on the window or the web page, or name it on the command line: `build/rpi5cpc game.dsk` |
-| Start straight into the machine | `build/rpi5cpc -S`, with the setup screen's rows as `--choice`: `build/rpi5cpc -S --choice Model=6128` |
+| Take a screenshot | Ctrl+Alt+S (into `~/sdlemu/screenshots`), or the console's `s` |
+| Insert an image | The setup screen's **Disks** page, drop it on the window or the web page, or name it on the command line: `build/sdlcpc game.dsk` |
+| Start straight into the machine | `build/sdlcpc -S`, with the setup screen's rows as `--choice`: `build/sdlcpc -S --choice Model=6128` |
 | Show the window on another computer | Log in with `ssh -C -Y <the Pi>` and start it there: fine for still pictures; games want the Pi's own monitor |
 | Catalogue and run | `CAT`, then `RUN"NAME` (CP/M: `|CPM` with a CP/M system disk) |
 | Play a Plus cartridge | Insert the `.cpr` into **Cartridge** on a 464 Plus or 6128 Plus: the Plus restarts from it |
 | Use expansion ROMs | Insert the `.rom` into **Cartridge**: the CPC restarts with it in slot 1 (2, 3 ... for more parts); then `|NAME` |
 
-Images live in `~/rpi5emu/cpc/`, settings in `~/.config/rpi5emu/settings.ini`; the
-inserted images are remembered across starts. `build/rpi5cpc --help` lists the options.
+Images live in `~/sdlemu/cpc/`, settings in `~/.config/sdlemu/settings.ini`; the
+inserted images are remembered across starts. `build/sdlcpc --help` lists the options.
 
 **Keyboard**: keys by position, a UK CPC keyboard on a PC keyboard. F1–F10
 are the CPC's f1–f0 keypad keys and F11 its `.`; keypad Enter is ENTER,
@@ -173,7 +170,7 @@ flowchart LR
   EMU -- picture --> WIN
   EMU -- sound --> SND[SDL audio]
   WIN -- keys · mouse --> EMU
-  DATA[("~/rpi5emu<br>cpc · cpc/roms")]
+  DATA[("~/sdlemu<br>cpc · cpc/roms")]
   EMU <--> DATA
   WEB <--> DATA
 ```
@@ -182,17 +179,17 @@ flowchart LR
   platform independent: the same code runs on the ESP32 boards.
 - **`src/`**: the glue, esp32cpc's `main/main.c` ported: memory, ROMs, settings, keyboard map,
   drives and status.
-- **[rpi5emu](https://github.com/rlucencic/rpi5emu)**: the window, the setup screen, sound,
+- **[sdlemu](https://github.com/rlucencic/sdlemu)**: the window, the setup screen, sound,
   input, the web page, the console, the data folder and the settings.
 - **[esp32emu](https://github.com/rlucencic/esp32emu)**: the CPU core (Z80).
 
 ## Development
 
 ```sh
-../rpi5emu/tools/pi.sh rpi5cpc build        # from another computer: sync to the Pi, build there
-../rpi5emu/tools/pi.sh rpi5cpc run          # its window on this computer (ssh -C -Y)
-../rpi5emu/tools/pi.sh rpi5cpc headless     # no window: drive it through the console
-../rpi5emu/tools/console.sh i 's /tmp/shot.png'
+../sdlemu/tools/pi.sh sdlcpc build        # from another computer: sync to the Pi, build there
+../sdlemu/tools/pi.sh sdlcpc run          # its window on this computer (ssh -C -Y)
+../sdlemu/tools/pi.sh sdlcpc headless     # no window: drive it through the console
+../sdlemu/tools/console.sh i 's /tmp/shot.png'
 ```
 
 `CLAUDE.md` has the details: the layout, how it was ported, the checks; esp32cpc's own

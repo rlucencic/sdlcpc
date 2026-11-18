@@ -1,9 +1,9 @@
 /*
- * Amstrad CPC 464 / 664 / 6128 / 464 Plus / 6128 Plus emulator on the
- * Raspberry Pi 5.
+ * Amstrad CPC 464 / 664 / 6128 / 464 Plus / 6128 Plus emulator with
+ * SDL 3.
  *
  * The Pi's side (window, sound, keyboard, setup screen, web page, console,
- * settings, the data folder) is the shared runtime in ../rpi5emu, the CPC
+ * settings, the data folder) is the shared runtime in ../sdlemu, the CPC
  * esp32cpc's (../esp32cpc/components/cpc); this file plugs one into the
  * other, as esp32cpc's main/main.c does on the boards (and mostly is that
  * file): memory, ROMs, settings, keyboard map, disks and the cartridge
